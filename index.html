@@ -103,8 +103,6 @@
             font-weight: bold;
             transition: all 0.3s ease;
             font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
         }
         
         .btn:hover {
@@ -230,102 +228,6 @@
             font-size: 0.8rem;
         }
 
-        /* Галерея */
-        .gallery-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            overflow: auto;
-        }
-
-        .gallery-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .gallery-title {
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-        }
-
-        .close-gallery {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        /* Модальное окно для увеличенного изображения */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            max-height: 80vh;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close-modal:hover {
-            color: #bbb;
-        }
-
         /* Медиа-запросы для планшетов и десктопов */
         @media (min-width: 600px) {
             .header-content {
@@ -357,10 +259,6 @@
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -403,7 +301,7 @@
         <div class="container">
             <h1>Новая коллекция BREND</h1>
             <p>Стиль, комфорт и инновационные технологии в каждой паре</p>
-            <button id="viewCollectionBtn" class="btn">Смотреть коллекцию</button>
+            <a href="#" class="btn">Смотреть коллекцию</a>
         </div>
     </section>
     
@@ -499,96 +397,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Галерея коллекции -->
-    <div id="galleryOverlay" class="gallery-overlay">
-        <span class="close-gallery">&times;</span>
-        <div class="gallery-container">
-            <h2 class="gallery-title">Коллекция BREND</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="1.jpg" alt="Модель BREND 1" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="2.jpg" alt="Модель BREND 2" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="3.jpg" alt="Модель BREND 3" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/500x500?text=BREND+4" alt="Модель BREND 4" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/500x500?text=BREND+5" alt="Модель BREND 5" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/500x500?text=BREND+6" alt="Модель BREND 6" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/500x500?text=BREND+7" alt="Модель BREND 7" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/500x500?text=BREND+8" alt="Модель BREND 8" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/500x500?text=BREND+9" alt="Модель BREND 9" class="gallery-img">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Модальное окно для увеличенного изображения -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
-    <script>
-        // Открытие галереи
-        document.getElementById('viewCollectionBtn').addEventListener('click', function() {
-            document.getElementById('galleryOverlay').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Запрет прокрутки основного контента
-        });
-
-        // Закрытие галереи
-        document.querySelector('.close-gallery').addEventListener('click', function() {
-            document.getElementById('galleryOverlay').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Возврат прокрутки
-        });
-
-        // Закрытие галереи при клике вне контента
-        document.getElementById('galleryOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Открытие модального окна с увеличенным изображением
-        const galleryImages = document.querySelectorAll('.gallery-img');
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeModal = document.querySelector('.close-modal');
-
-        galleryImages.forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-                modalImg.alt = this.alt;
-            });
-        });
-
-        // Закрытие модального окна
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-
-        // Закрытие модального окна при клике вне изображения
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
