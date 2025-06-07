@@ -238,14 +238,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             overflow: auto;
+            padding: 20px 0;
         }
 
         .gallery-container {
-            max-width: 1200px;
-            margin: 50px auto;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
@@ -253,77 +254,192 @@
         .gallery-title {
             color: white;
             margin-bottom: 30px;
+            font-size: 2rem;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .gallery-item {
             overflow: hidden;
             border-radius: 8px;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            background-color: #222;
         }
 
         .gallery-item:hover {
             transform: scale(1.03);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
         }
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
             cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.8;
+        }
+
+        .gallery-item-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-caption {
+            transform: translateY(0);
         }
 
         .close-gallery {
-            position: absolute;
-            top: 20px;
+            position: fixed;
+            top: 25px;
             right: 30px;
             color: white;
-            font-size: 35px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+        }
+
+        .close-gallery:hover {
+            color: var(--secondary-color);
         }
 
         /* Модальное окно для увеличенного изображения */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1001;
+            z-index: 1002;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0,0,0,0.95);
         }
 
         .modal-content {
             margin: auto;
             display: block;
-            width: 80%;
-            max-width: 700px;
-            max-height: 80vh;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+            animation: zoom 0.3s;
+        }
+
+        @keyframes zoom {
+            from {transform: translateY(-50%) scale(0.9); opacity: 0}
+            to {transform: translateY(-50%) scale(1); opacity: 1}
         }
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 35px;
+            top: 20px;
+            right: 40px;
             color: #f1f1f1;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: bold;
             transition: 0.3s;
             cursor: pointer;
+            z-index: 1003;
         }
 
         .close-modal:hover {
-            color: #bbb;
+            color: var(--secondary-color);
+        }
+
+        /* Навигация по галерее */
+        .gallery-nav {
+            position: fixed;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1001;
+        }
+
+        .gallery-nav-btn {
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* Загрузчик */
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary-color);
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-circle {
+            width: 20px;
+            height: 20px;
+            margin: 0 10px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        .loader-circle:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loader-circle:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            to {
+                transform: translateY(-20px);
+                opacity: 0.5;
+            }
         }
 
         /* Медиа-запросы для планшетов и десктопов */
@@ -377,14 +493,31 @@
             .hero h1 {
                 font-size: 3rem;
             }
+
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Загрузчик -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+    </div>
+
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="index.html" class="logo">BREND</a>
+                <a href="index.html" class="logo">MELISIUM</a>
                 <nav>
                     <ul>
                         <li><a href="#">Главная</a></li>
@@ -413,10 +546,10 @@
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="1.jpg" alt="Модель PREMIATA">
+                        <img src="1.jpg" alt="Модель PRIMIATA">
                     </div>               
                     <div class="product-info">
-                        <h3 class="product-title">PRIMIATA</h3>
+                        <h3 class="product-title">BREND</h3>
                         <p>Стильные кроссовки для повседневной носки</p>
                         <div class="product-price">12 990 ₽</div>
                         <a href="#" class="btn">В корзину</a>
@@ -437,13 +570,11 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="3.jpg
-                        
-                            " alt="Модель BREND">
+                        <img src="3.jpg" alt="Модель BREND">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">BREND</h3>
-                        <p>примеалные туфли высшего класса</p>
+                        <p>Спортивные кроссовки с амортизацией</p>
                         <div class="product-price">13 490 ₽</div>
                         <a href="#" class="btn">В корзину</a>
                     </div>
@@ -506,34 +637,92 @@
     <div id="galleryOverlay" class="gallery-overlay">
         <span class="close-gallery">&times;</span>
         <div class="gallery-container">
-            <h2 class="gallery-title">Коллекция BREND</h2>
+            <h2 class="gallery-title">Коллекция BREND 2025</h2>
             <div class="gallery-grid">
+                <!-- 21 изображение коллекции -->
                 <div class="gallery-item">
-                    <img src="1.jpg" alt="Модель BREND 1" class="gallery-img">
+                    <img src="1.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <div class="gallery-item-caption">Urban Classic</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="2.jpg" alt="Модель BREND 2" class="gallery-img">
+                    <img src="2.jpg" alt="BREND модель Leather Premium" class="gallery-img">
+                    <div class="gallery-item-caption">Leather Premium</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="3.jpg" alt="Модель BREND 3" class="gallery-img">
+                    <img src="3.jpg" alt="BREND модель Sport Pro" class="gallery-img">
+                    <div class="gallery-item-caption">Sport Pro</div>
                 </div>
                 <div class="gallery-item">
-                     <img src="4.jpg" alt="Модель BREND 4" class="gallery-img">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+4" alt="BREND модель Street Style" class="gallery-img">
+                    <div class="gallery-item-caption">Street Style</div>
                 </div>
                 <div class="gallery-item">
-                     <img src="5.jpg" alt="Модель BREND 5" class="gallery-img">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+5" alt="BREND модель Winter Edition" class="gallery-img">
+                    <div class="gallery-item-caption">Winter Edition</div>
                 </div>
                 <div class="gallery-item">
-                     <img src="6.jpg" alt="Модель BREND 6" class="gallery-img">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+6" alt="BREND модель Air Comfort" class="gallery-img">
+                    <div class="gallery-item-caption">Air Comfort</div>
                 </div>
                 <div class="gallery-item">
-                     <img src="7.jpg" alt="Модель BREND 7" class="gallery-img">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+7" alt="BREND модель Runner X" class="gallery-img">
+                    <div class="gallery-item-caption">Runner X</div>
                 </div>
                 <div class="gallery-item">
-                     <img src="8.jpg" alt="Модель BREND 8" class="gallery-img">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+8" alt="BREND модель Classic Black" class="gallery-img">
+                    <div class="gallery-item-caption">Classic Black</div>
                 </div>
                 <div class="gallery-item">
-                     <img src="9.jpg" alt="Модель BREND 9" class="gallery-img">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+9" alt="BREND модель White Edition" class="gallery-img">
+                    <div class="gallery-item-caption">White Edition</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+10" alt="BREND модель Retro Style" class="gallery-img">
+                    <div class="gallery-item-caption">Retro Style</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+11" alt="BREND модель Future Tech" class="gallery-img">
+                    <div class="gallery-item-caption">Future Tech</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+12" alt="BREND модель City Walk" class="gallery-img">
+                    <div class="gallery-item-caption">City Walk</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+13" alt="BREND модель Premium Gold" class="gallery-img">
+                    <div class="gallery-item-caption">Premium Gold</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+14" alt="BREND модель Silver Line" class="gallery-img">
+                    <div class="gallery-item-caption">Silver Line</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+15" alt="BREND модель Night Vision" class="gallery-img">
+                    <div class="gallery-item-caption">Night Vision</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+16" alt="BREND модель Summer Breeze" class="gallery-img">
+                    <div class="gallery-item-caption">Summer Breeze</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+17" alt="BREND модель Urban Explorer" class="gallery-img">
+                    <div class="gallery-item-caption">Urban Explorer</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+18" alt="BREND модель Classic Brown" class="gallery-img">
+                    <div class="gallery-item-caption">Classic Brown</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+19" alt="BREND модель Sport Elite" class="gallery-img">
+                    <div class="gallery-item-caption">Sport Elite</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+20" alt="BREND модель Limited Edition" class="gallery-img">
+                    <div class="gallery-item-caption">Limited Edition</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+21" alt="BREND модель Signature Collection" class="gallery-img">
+                    <div class="gallery-item-caption">Signature Collection</div>
                 </div>
             </div>
         </div>
@@ -542,20 +731,40 @@
     <!-- Модальное окно для увеличенного изображения -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
+        <div class="gallery-nav">
+            <div class="gallery-nav-btn prev-btn">&#10094;</div>
+            <div class="gallery-nav-btn next-btn">&#10095;</div>
+        </div>
         <img class="modal-content" id="modalImage">
     </div>
 
     <script>
+        // Загрузчик страницы
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Галерея
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentImageIndex = 0;
+
         // Открытие галереи
         document.getElementById('viewCollectionBtn').addEventListener('click', function() {
             document.getElementById('galleryOverlay').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Запрет прокрутки основного контента
+            document.body.style.overflow = 'hidden';
         });
 
         // Закрытие галереи
         document.querySelector('.close-gallery').addEventListener('click', function() {
             document.getElementById('galleryOverlay').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Возврат прокрутки
+            document.body.style.overflow = 'auto';
         });
 
         // Закрытие галереи при клике вне контента
@@ -567,160 +776,66 @@
         });
 
         // Открытие модального окна с увеличенным изображением
-        const galleryImages = document.querySelectorAll('.gallery-img');
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeModal = document.querySelector('.close-modal');
-
-        galleryImages.forEach(img => {
+        galleryImages.forEach((img, index) => {
             img.addEventListener('click', function() {
                 modal.style.display = 'block';
                 modalImg.src = this.src;
                 modalImg.alt = this.alt;
+                currentImageIndex = index;
+                document.body.style.overflow = 'hidden';
             });
         });
 
         // Закрытие модального окна
         closeModal.addEventListener('click', function() {
             modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
 
         // Закрытие модального окна при клике вне изображения
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
                 this.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея сервера Minecraft</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            color: #64dd17;
-            text-align: center;
-        }
-        
-        .gallery-description {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .screenshot {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 2px solid #2e7d32;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .screenshot:hover {
-            transform: scale(1.03);
-        }
-        
-        /* Стили для модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-        
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90vh;
-            margin-top: 5vh;
-        }
-        
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="gallery-container">
-        <h1>Галерея</h1>
-        <p class="gallery-description">Нажмите на изображение для просмотра в полном размере:</p>
-        
-        <div class="screenshots">
-            <img src="screenshot1
-                                 
-                                
-            <img src="4.jpg" alt="модель 1" class="screenshot" onclick="openModal(this)">
-            <img src="2.jpg" alt="модель 2" class="screenshot" onclick="openModal(this)">
-            <img src="3.jpg" alt="модель 3" class="screenshot" onclick="openModal(this)">
-            <img src="4.jpg" alt="модель 4" class="screenshot" onclick="openModal(this)">
-        </div>
-    </div>
-    
-    <!-- Модальное окно -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-    
-    <script>
-        function openModal(img) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
+
+        // Навигация по галерее в модальном окне
+        function showImage(index) {
+            if (index >= galleryImages.length) {
+                currentImageIndex = 0;
+            } else if (index < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else {
+                currentImageIndex = index;
+            }
             
-            modal.style.display = "block";
+            const img = galleryImages[currentImageIndex];
             modalImg.src = img.src;
             modalImg.alt = img.alt;
-            
-            // Закрытие при клике вне изображения
-            modal.onclick = function(event) {
-                if (event.target === modal) {
-                    closeModal();
+        }
+
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showImage(currentImageIndex + 1);
+        });
+
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showImage(currentImageIndex - 1);
+        });
+
+        // Навигация с помощью клавиатуры
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === 'block') {
+                if (e.key === 'ArrowRight') {
+                    showImage(currentImageIndex + 1);
+                } else if (e.key === 'ArrowLeft') {
+                    showImage(currentImageIndex - 1);
+                } else if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
-            };
-        }
-        
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-        
-        // Закрытие по ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
             }
         });
     </script>
