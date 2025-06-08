@@ -582,9 +582,56 @@
             </div>
         </div>
     </section>
+   <h1>Галерея</h1>
+        <p class="gallery-description">Нажмите на изображение для просмотра в полном размере:</p>
+        
+        <div class="screenshots">
+            <img src="screenshot1.jpg" alt="модель 7" class="screenshot" onclick="openModal(this)">
+            <img src="screenshot2.jpg" alt="модель 6"  class="screenshot" onclick="openModal(this)">
+            <img src="screenshot3.jpg" alt="модель 5" class="screenshot" onclick="openModal(this)">
+            <img src="screenshot4.jpg" alt="модель 4" class="screenshot" onclick="openModal(this)">
+        </div>
+    </div>
+    
+    <!-- Модальное окно -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <script>
+        function openModal(img) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            
+            // Закрытие при клике вне изображения
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            };
+        }
+        
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+        
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+
     
     <section class="about">
         <div class="container">
+
             <h2 class="section-title">О бренде BREND</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <p>BREND - это синтез итальянского качества и современного дизайна. Каждая пара обуви создается с вниманием к деталям и заботой о комфорте наших клиентов.</p>
@@ -923,50 +970,7 @@
 </head>
 <body>
     <div class="gallery-container">
-        <h1>Галерея</h1>
-        <p class="gallery-description">Нажмите на изображение для просмотра в полном размере:</p>
+
         
-        <div class="screenshots">
-            <img src="screenshot1.jpg" alt="модель 7" class="screenshot" onclick="openModal(this)">
-            <img src="screenshot2.jpg" alt="модель 6"  class="screenshot" onclick="openModal(this)">
-            <img src="screenshot3.jpg" alt="модель 5" class="screenshot" onclick="openModal(this)">
-            <img src="screenshot4.jpg" alt="модель 4" class="screenshot" onclick="openModal(this)">
-        </div>
-    </div>
-    
-    <!-- Модальное окно -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-    
-    <script>
-        function openModal(img) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            
-            modal.style.display = "block";
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-            
-            // Закрытие при клике вне изображения
-            modal.onclick = function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            };
-        }
-        
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-        
-        // Закрытие по ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
-    </script>
 </body>
 </html>
