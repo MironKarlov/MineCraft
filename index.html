@@ -582,61 +582,6 @@
             </div>
         </div>
     </section>
-
-    
-       }
-    </style>
-</head>
-<body>
-    <div class="gallery-container">
-        <h1>Галерея</h1>
-        <p class="gallery-description">Нажмите на изображение для просмотра в полном размере:</p>
-        
-        <div class="screenshots">
-            <img src="screenshot1.jpg" alt="Скриншот сервера 1" class="screenshot" onclick="openModal(this)">
-            <img src="screenshot2.jpg" alt="Скриншот сервера 2" class="screenshot" onclick="openModal(this)">
-            <img src="screenshot3.jpg" alt="Скриншот сервера 3" class="screenshot" onclick="openModal(this)">
-            <img src="screenshot4.jpg" alt="Скриншот сервера 4" class="screenshot" onclick="openModal(this)">
-        </div>
-    </div>
-    
-    <!-- Модальное окно -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-    
-    <script>
-        function openModal(img) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            
-            modal.style.display = "block";
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-            
-            // Закрытие при клике вне изображения
-            modal.onclick = function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            };
-        }
-        
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-        
-        // Закрытие по ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
-    </script>
-</body>
-</html>    
-
     
     <section class="about">
         <div class="container">
@@ -688,82 +633,211 @@
         </div>
     </footer>
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея сервера Minecraft</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
+    <!-- Галерея коллекции -->
+    <div id="galleryOverlay" class="gallery-overlay">
+        <span class="close-gallery">&times;</span>
+        <div class="gallery-container">
+            <h2 class="gallery-title">Коллекция BREND 2025</h2>
+            <div class="gallery-grid">
+                <!-- 21 изображение коллекции -->
+                <div class="gallery-item">
+                    <img src="1.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <div class="gallery-item-caption">Urban Classic</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="2.jpg" alt="BREND модель Leather Premium" class="gallery-img">
+                    <div class="gallery-item-caption">Leather Premium</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="3.jpg" alt="BREND модель Sport Pro" class="gallery-img">
+                    <div class="gallery-item-caption">Sport Pro</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+4" alt="BREND модель Street Style" class="gallery-img">
+                    <div class="gallery-item-caption">Street Style</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+5" alt="BREND модель Winter Edition" class="gallery-img">
+                    <div class="gallery-item-caption">Winter Edition</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+6" alt="BREND модель Air Comfort" class="gallery-img">
+                    <div class="gallery-item-caption">Air Comfort</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+7" alt="BREND модель Runner X" class="gallery-img">
+                    <div class="gallery-item-caption">Runner X</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+8" alt="BREND модель Classic Black" class="gallery-img">
+                    <div class="gallery-item-caption">Classic Black</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+9" alt="BREND модель White Edition" class="gallery-img">
+                    <div class="gallery-item-caption">White Edition</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+10" alt="BREND модель Retro Style" class="gallery-img">
+                    <div class="gallery-item-caption">Retro Style</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+11" alt="BREND модель Future Tech" class="gallery-img">
+                    <div class="gallery-item-caption">Future Tech</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+12" alt="BREND модель City Walk" class="gallery-img">
+                    <div class="gallery-item-caption">City Walk</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+13" alt="BREND модель Premium Gold" class="gallery-img">
+                    <div class="gallery-item-caption">Premium Gold</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+14" alt="BREND модель Silver Line" class="gallery-img">
+                    <div class="gallery-item-caption">Silver Line</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+15" alt="BREND модель Night Vision" class="gallery-img">
+                    <div class="gallery-item-caption">Night Vision</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+16" alt="BREND модель Summer Breeze" class="gallery-img">
+                    <div class="gallery-item-caption">Summer Breeze</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+17" alt="BREND модель Urban Explorer" class="gallery-img">
+                    <div class="gallery-item-caption">Urban Explorer</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+18" alt="BREND модель Classic Brown" class="gallery-img">
+                    <div class="gallery-item-caption">Classic Brown</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+19" alt="BREND модель Sport Elite" class="gallery-img">
+                    <div class="gallery-item-caption">Sport Elite</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+20" alt="BREND модель Limited Edition" class="gallery-img">
+                    <div class="gallery-item-caption">Limited Edition</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/800x800/333/fff?text=BREND+21" alt="BREND модель Signature Collection" class="gallery-img">
+                    <div class="gallery-item-caption">Signature Collection</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для увеличенного изображения -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="gallery-nav">
+            <div class="gallery-nav-btn prev-btn">&#10094;</div>
+            <div class="gallery-nav-btn next-btn">&#10095;</div>
+        </div>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Загрузчик страницы
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Галерея
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentImageIndex = 0;
+
+        // Открытие галереи
+        document.getElementById('viewCollectionBtn').addEventListener('click', function() {
+            document.getElementById('galleryOverlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Закрытие галереи
+        document.querySelector('.close-gallery').addEventListener('click', function() {
+            document.getElementById('galleryOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Закрытие галереи при клике вне контента
+        document.getElementById('galleryOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Открытие модального окна с увеличенным изображением
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                currentImageIndex = index;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Закрытие модального окна
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Закрытие модального окна при клике вне изображения
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Навигация по галерее в модальном окне
+        function showImage(index) {
+            if (index >= galleryImages.length) {
+                currentImageIndex = 0;
+            } else if (index < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else {
+                currentImageIndex = index;
+            }
+            
+            const img = galleryImages[currentImageIndex];
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
         }
-        
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            color: #64dd17;
-            text-align: center;
-        }
-        
-        .gallery-description {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .screenshot {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 2px solid #2e7d32;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .screenshot:hover {
-            transform: scale(1.03);
-        }
-        
-        /* Стили для модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-        
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90vh;
-            margin-top: 5vh;
-        }
-        
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
- 
+
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showImage(currentImageIndex + 1);
+        });
+
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showImage(currentImageIndex - 1);
+        });
+
+        // Навигация с помощью клавиатуры
+        document.addEventListener('keydown', function(e) {
+            if (modal.style.display === 'block') {
+                if (e.key === 'ArrowRight') {
+                    showImage(currentImageIndex + 1);
+                } else if (e.key === 'ArrowLeft') {
+                    showImage(currentImageIndex - 1);
+                } else if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
