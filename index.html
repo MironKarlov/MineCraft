@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BREND - Модная обувь премиум-класса</title>
+    <title>MELISIUM - Модная обувь премиум-класса</title>
     <style>
         :root {
-            --primary-color: #2c3e50;а
+            --primary-color: #2c3e50;
             --secondary-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #1a1a1a;
@@ -112,8 +112,8 @@
             transform: translateY(-3px);
         }
         
-        .products {
-            padding: 2rem 0;
+        .section {
+            padding: 3rem 0;
         }
         
         .section-title {
@@ -176,13 +176,89 @@
         }
         
         .about {
-            padding: 2rem 0;
             background-color: #f9f9f9;
         }
         
-        .about p {
-            padding: 0 15px;
-            font-size: 0.95rem;
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonials {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        .newsletter {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
         }
         
         footer {
@@ -221,6 +297,18 @@
         .footer-column ul li a {
             color: #ddd;
             text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
         }
         
         .copyright {
@@ -460,6 +548,18 @@
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (min-width: 768px) {
@@ -471,17 +571,27 @@
                 font-size: 2.5rem;
             }
             
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
+            .about-content {
+                flex-direction: row;
+                text-align: left;
             }
-
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
+            
+            .about-image {
+                margin-right: 2rem;
+                margin-bottom: 0;
             }
         }
 
         @media (min-width: 992px) {
             .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .testimonial-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
             
@@ -492,16 +602,6 @@
             
             .hero h1 {
                 font-size: 3rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .gallery-grid {
-                grid-template-columns: repeat(5, 1fr);
             }
         }
     </style>
@@ -534,13 +634,13 @@
     
     <section class="hero">
         <div class="container">
-            <h1>Новая коллекция BREND</h1>
+            <h1>Новая коллекция MELISIUM</h1>
             <p>Стиль, комфорт и инновационные технологии в каждой паре</p>
             <button id="viewCollectionBtn" class="btn">Смотреть коллекцию</button>
         </div>
     </section>
     
-    <section class="products">
+    <section class="section products">
         <div class="container">
             <h2 class="section-title">Популярные модели</h2>
             <div class="product-grid">
@@ -549,7 +649,7 @@
                         <img src="1.jpg" alt="Модель PRIMIATA">
                     </div>               
                     <div class="product-info">
-                        <h3 class="product-title">BREND</h3>
+                        <h3 class="product-title">MELISIUM CLASSIC</h3>
                         <p>Стильные кроссовки для повседневной носки</p>
                         <div class="product-price">12 990 ₽</div>
                         <a href="#" class="btn">В корзину</a>
@@ -558,10 +658,10 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="2.jpg" alt="Модель BREND">
+                        <img src="2.jpg" alt="Модель MELISIUM">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">BREND</h3>
+                        <h3 class="product-title">MELISIUM PREMIUM</h3>
                         <p>Премиальные кожаные кроссовки</p>
                         <div class="product-price">15 990 ₽</div>
                         <a href="#" class="btn">В корзину</a>
@@ -570,12 +670,48 @@
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="3.jpg" alt="Модель BREND">
+                        <img src="3.jpg" alt="Модель MELISIUM">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">BREND</h3>
+                        <h3 class="product-title">MELISIUM SPORT</h3>
                         <p>Спортивные кроссовки с амортизацией</p>
                         <div class="product-price">13 490 ₽</div>
+                        <a href="#" class="btn">В корзину</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="4.jpg" alt="Модель MELISIUM">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MELISIUM URBAN</h3>
+                        <p>Городские кроссовки с уникальным дизайном</p>
+                        <div class="product-price">14 990 ₽</div>
+                        <a href="#" class="btn">В корзину</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="5.jpg" alt="Модель MELISIUM">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MELISIUM LUXE</h3>
+                        <p>Эксклюзивная модель с золотыми элементами</p>
+                        <div class="product-price">19 990 ₽</div>
+                        <a href="#" class="btn">В корзину</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="6.jpg" alt="Модель MELISIUM">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">MELISIUM RUN</h3>
+                        <p>Беговые кроссовки с технологией AirFlow</p>
+                        <div class="product-price">16 490 ₽</div>
                         <a href="#" class="btn">В корзину</a>
                     </div>
                 </div>
@@ -583,12 +719,88 @@
         </div>
     </section>
     
-    <section class="about">
+    <section class="section about">
         <div class="container">
-            <h2 class="section-title">О бренде BREND</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p>BREND - это синтез итальянского качества и современного дизайна. Каждая пара обуви создается с вниманием к деталям и заботой о комфорте наших клиентов.</p>
-                <p>Мы используем только premium материалы и инновационные технологии производства, чтобы предложить вам обувь, которая будет радовать вас долгие годы.</p>
+            <h2 class="section-title">О бренде MELISIUM</h2>
+            <div class="about-content">
+                <img src="about.jpg" alt="О бренде MELISIUM" class="about-image">
+                <div>
+                    <p>MELISIUM - это синтез итальянского качества и современного дизайна. Каждая пара обуви создается с вниманием к деталям и заботой о комфорте наших клиентов.</p>
+                    <p>Основанная в 2010 году, наша компания быстро завоевала признание среди ценителей качественной обуви. Мы используем только premium материалы и инновационные технологии производства, чтобы предложить вам обувь, которая будет радовать вас долгие годы.</p>
+                    <p>Наша философия - создавать обувь, которая сочетает в себе последние тенденции моды, непревзойденный комфорт и долговечность. Каждая модель проходит строгий контроль качества перед тем, как попасть к вам.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают MELISIUM</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>Качество материалов</h3>
+                    <p>Используем только натуральную кожу и высокотехнологичные материалы</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✯</div>
+                    <h3>Уникальный дизайн</h3>
+                    <p>Авторские модели от ведущих дизайнеров обуви</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♥</div>
+                    <h3>Комфорт</h3>
+                    <p>Анатомическая стелька и продуманная конструкция</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✉</div>
+                    <h3>Гарантия</h3>
+                    <p>Официальная гарантия на все модели 12 месяцев</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Отзывы наших клиентов</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Ношу кроссовки MELISIUM уже второй год. Это самая удобная обувь, которую я когда-либо имел. Дизайн просто потрясающий!"</p>
+                    <p class="testimonial-author">- Иван Петров, Москва</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Заказала женскую модель на сайте, доставили быстро. Обувь сидит идеально, очень удобная и стильная. Теперь только MELISIUM!"</p>
+                    <p class="testimonial-author">- Анна Смирнова, Санкт-Петербург</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Качество на высшем уровне. После года активного использования выглядят как новые. Однозначно рекомендую этот бренд."</p>
+                    <p class="testimonial-author">- Дмитрий Иванов, Екатеринбург</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Подарили мужу на день рождения. Он в восторге! Говорит, что это самые удобные кроссовки в его жизни."</p>
+                    <p class="testimonial-author">- Ольга Козлова, Казань</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Отличное соотношение цены и качества. По сравнению с другими премиальными брендами, MELISIUM выигрывает по всем параметрам."</p>
+                    <p class="testimonial-author">- Михаил Сидоров, Новосибирск</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Обслуживание на высоте! Помогли с выбором размера, ответили на все вопросы. Обувь пришла идеально упакованной."</p>
+                    <p class="testimonial-author">- Елена Васильева, Сочи</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section newsletter">
+        <div class="container">
+            <h2 class="section-title">Подпишитесь на рассылку</h2>
+            <p>Узнавайте первыми о новых коллекциях и специальных предложениях</p>
+            <div class="newsletter-form">
+                <input type="text" placeholder="Ваше имя">
+                <input type="email" placeholder="Ваш email">
+                <button class="btn" style="background-color: var(--primary-color);">Подписаться</button>
             </div>
         </div>
     </section>
@@ -597,8 +809,14 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>BREND</h3>
+                    <h3>MELISIUM</h3>
                     <p>Премиальная обувь для тех, кто ценит качество и стиль.</p>
+                    <div class="social-links">
+                        <a href="#">📱</a>
+                        <a href="#">📘</a>
+                        <a href="#">📸</a>
+                        <a href="#">🎥</a>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Каталог</h3>
@@ -607,6 +825,7 @@
                         <li><a href="#">Женская обувь</a></li>
                         <li><a href="#">Новая коллекция</a></li>
                         <li><a href="#">Распродажа</a></li>
+                        <li><a href="#">Специальные предложения</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -616,114 +835,115 @@
                         <li><a href="#">Возврат и обмен</a></li>
                         <li><a href="#">Размеры</a></li>
                         <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Уход за обувью</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Контакты</h3>
                     <ul>
                         <li>Телефон: +7 (123) 456-78-90</li>
-                        <li>Email: info@BREND.ru</li>
-                        <li>Ростов-на-Дону, ул. Садовая, 124</li>
+                        <li>Email: info@melisium.ru</li>
+                        <li>Адрес: Москва, ул. Тверская, 12</li>
+                        <li>Часы работы: Пн-Пт 10:00-20:00</li>
+                        <li>Сб-Вс 11:00-19:00</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 BREND. Все права защищены.</p>
+                <p>&copy; 2025 MELISIUM. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-  
-  
     <!-- Галерея коллекции -->
     <div id="galleryOverlay" class="gallery-overlay">
         <span class="close-gallery">&times;</span>
         <div class="gallery-container">
-            <h2 class="gallery-title">Коллекция BREND 2025</h2>
+            <h2 class="gallery-title">Коллекция MELISIUM 2025</h2>
             <div class="gallery-grid">
                 <!-- 21 изображение коллекции -->
                 <div class="gallery-item">
-                    <img src="1.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="1.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Urban Classic</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="2.jpg" alt="BREND модель Leather Premium" class="gallery-img">
+                    <img src="2.jpg" alt="MELISIUM модель Leather Premium" class="gallery-img">
                     <div class="gallery-item-caption">Leather Premium</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="3.jpg" alt="BREND модель Sport Pro" class="gallery-img">
+                    <img src="3.jpg" alt="MELISIUM модель Sport Pro" class="gallery-img">
                     <div class="gallery-item-caption">Sport Pro</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="4.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="4.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Street Style</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="5.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="5.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Winter Edition</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="6.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="6.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Air Comfort</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="7.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="7.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Runner X</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="8.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="8.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Classic Black</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="9.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="9.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">White Edition</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="10.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="10.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Retro Style</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="11.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="11.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Future Tech</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="12.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="12.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">City Walk</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="13.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="13.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Premium Gold</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="14.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="14.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Silver Line</div>
                 </div>
                 <div class="gallery-item">
-                   <img src="15.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                   <img src="15.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Night Vision</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="16.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="16.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Summer Breeze</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="17.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="17.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Urban Explorer</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="18.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="18.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Classic Brown</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="19.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="19.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Sport Elite</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="20.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="20.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Limited Edition</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="21.jpg" alt="BREND модель Urban Classic" class="gallery-img">
+                    <img src="21.jpg" alt="MELISIUM модель Urban Classic" class="gallery-img">
                     <div class="gallery-item-caption">Signature Collection</div>
                 </div>
             </div>
@@ -789,191 +1009,4 @@
         });
 
         // Закрытие модального окна
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        // Закрытие модального окна при клике вне изображения
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Навигация по галерее в модальном окне
-        function showImage(index) {
-            if (index >= galleryImages.length) {
-                currentImageIndex = 0;
-            } else if (index < 0) {
-                currentImageIndex = galleryImages.length - 1;
-            } else {
-                currentImageIndex = index;
-            }
-            
-            const img = galleryImages[currentImageIndex];
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-        }
-
-        nextBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            showImage(currentImageIndex + 1);
-        });
-
-        prevBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            showImage(currentImageIndex - 1);
-        });
-
-        // Навигация с помощью клавиатуры
-        document.addEventListener('keydown', function(e) {
-            if (modal.style.display === 'block') {
-                if (e.key === 'ArrowRight') {
-                    showImage(currentImageIndex + 1);
-                } else if (e.key === 'ArrowLeft') {
-                    showImage(currentImageIndex - 1);
-                } else if (e.key === 'Escape') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        });
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея сервера Minecraft</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            color: #64dd17;
-            text-align: center;
-        }
-        
-        .gallery-description {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .screenshot {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 2px solid #2e7d32;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .screenshot:hover {
-            transform: scale(1.03);
-        }
-        
-        /* Стили для модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-        
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90vh;
-            margin-top: 5vh;
-        }
-        
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="gallery-container">
-        <h1>Галерея</h1>
-        <p class="gallery-description">Нажмите на изображение для просмотра в полном размере:</p>
-        
-        <div class="screenshots">
-            <img src="1.jpg" alt="модель  1" class="screenshot" onclick="openModal(this)">
-            <img src="2.jpg" alt="модель  2" class="screenshot" onclick="openModal(this)">
-            <img src="3.jpg" alt="модель  3" class="screenshot" onclick="openModal(this)">
-            <img src="4.jpg" alt="модель  4" class="screenshot" onclick="openModal(this)">
-        </div>
-    </div>
-    
-    <!-- Модальное окно -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-    
-    <script>
-        function openModal(img) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            
-            modal.style.display = "block";
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-            
-            // Закрытие при клике вне изображения
-            modal.onclick = function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            };
-        }
-        
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
-        }
-        
-        // Закрытие по ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
-    </script>
-</body>
-</html>
+        closeModal.addEventListener('click', function
