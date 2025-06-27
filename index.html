@@ -720,6 +720,229 @@
             margin-top: 20px;
         }
 
+        /* Новые стили для дополнительных секций */
+        .features {
+            padding: 3rem 0;
+            background-color: var(--light-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .testimonials {
+            padding: 3rem 0;
+            background-color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        .testimonial-rating {
+            color: #f1c40f;
+            margin-top: 0.5rem;
+        }
+
+        .blog {
+            padding: 3rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .blog-excerpt {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .blog-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .subscribe {
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .subscribe-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .subscribe-form input {
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .subscribe-form button {
+            padding: 0.8rem 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #c0392b;
+        }
+
+        .instagram-feed {
+            padding: 3rem 0;
+            background-color: white;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .instagram-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1 / 1;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
         /* Медиа-запросы для планшетов и десктопов */
         @media (min-width: 600px) {
             .header-content {
@@ -737,6 +960,22 @@
             
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -756,6 +995,18 @@
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .subscribe-form {
+                flex-direction: row;
+            }
+
+            .subscribe-form input {
+                flex: 1;
+            }
+
+            .subscribe-form button {
+                width: auto;
+            }
         }
 
         @media (min-width: 992px) {
@@ -774,6 +1025,22 @@
 
             .gallery-grid {
                 grid-template-columns: repeat(4, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .testimonial-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(6, 1fr);
             }
         }
 
@@ -867,6 +1134,71 @@
                         <button class="btn add-to-cart" data-id="3" data-name="BREND Sport Pro" data-price="13490" data-img="3.jpg">В корзину</button>
                     </div>
                 </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="4.jpg" alt="Модель BREND">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">BREND Street Style</h3>
+                        <p>Уличный стиль для активного образа жизни</p>
+                        <div class="product-price">11 990 ₽</div>
+                        <button class="btn add-to-cart" data-id="4" data-name="BREND Street Style" data-price="11990" data-img="4.jpg">В корзину</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="5.jpg" alt="Модель BREND">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">BREND Winter Edition</h3>
+                        <p>Теплые и стильные зимние кроссовки</p>
+                        <div class="product-price">16 490 ₽</div>
+                        <button class="btn add-to-cart" data-id="5" data-name="BREND Winter Edition" data-price="16490" data-img="5.jpg">В корзину</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="6.jpg" alt="Модель BREND">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">BREND Air Comfort</h3>
+                        <p>Невероятно удобные кроссовки с воздушной подушкой</p>
+                        <div class="product-price">14 990 ₽</div>
+                        <button class="btn add-to-cart" data-id="6" data-name="BREND Air Comfort" data-price="14990" data-img="6.jpg">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Новая секция: Преимущества -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают BREND</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Качество материалов</h3>
+                    <p>Мы используем только натуральную кожу и высокотехнологичные материалы премиум-класса</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✯</div>
+                    <h3 class="feature-title">Комфорт</h3>
+                    <p>Анатомическая стелька и продуманная конструкция обеспечивают максимальный комфорт</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✧</div>
+                    <h3 class="feature-title">Дизайн</h3>
+                    <p>Современный дизайн, разработанный ведущими европейскими дизайнерами</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✉</div>
+                    <h3 class="feature-title">Гарантия</h3>
+                    <p>Гарантия 1 год на все модели и бесплатный сервис в течение 3 месяцев</p>
+                </div>
             </div>
         </div>
     </section>
@@ -877,831 +1209,19 @@
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <p>BREND - это синтез итальянского качества и современного дизайна. Каждая пара обуви создается с вниманием к деталям и заботой о комфорте наших клиентов.</p>
                 <p>Мы используем только premium материалы и инновационные технологии производства, чтобы предложить вам обувь, которая будет радовать вас долгие годы.</p>
+                <p>Наша миссия - создавать обувь, которая сочетает в себе стиль, комфорт и долговечность. Мы тщательно контролируем каждый этап производства, от выбора материалов до финальной проверки качества.</p>
+                <p>BREND - это не просто обувь, это образ жизни. Наши клиенты ценят качество, стиль и индивидуальность. Присоединяйтесь к сообществу BREND и откройте для себя новый уровень комфорта и стиля.</p>
             </div>
         </div>
     </section>
-    
-    <footer>
+
+    <!-- Новая секция: Отзывы -->
+    <section class="testimonials">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>BREND</h3>
-                    <p>Премиальная обувь для тех, кто ценит качество и стиль.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Каталог</h3>
-                    <ul>
-                        <li><a href="#">Мужская обувь</a></li>
-                        <li><a href="#">Женская обувь</a></li>
-                        <li><a href="#">Новая коллекция</a></li>
-                        <li><a href="#">Распродажа</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Помощь</h3>
-                    <ul>
-                        <li><a href="#">Доставка и оплата</a></li>
-                        <li><a href="#">Возврат и обмен</a></li>
-                        <li><a href="#">Размеры</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li>Телефон: +7 (123) 456-78-90</li>
-                        <li>Email: info@BREND.ru</li>
-                        <li>Ростов-на-Дону, ул. Садовая, 124</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 BREND. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Корзина -->
-    <div class="cart-overlay" id="cartOverlay">
-        <div class="cart-header">
-            <h2 class="cart-title">Ваша корзина</h2>
-            <button class="close-cart">&times;</button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Товары будут добавляться сюда динамически -->
-            <div class="cart-empty">Ваша корзина пуста</div>
-        </div>
-        <div class="cart-summary" id="cartSummary" style="display: none;">
-            <div class="cart-total">
-                <span>Итого:</span>
-                <span id="cartTotal">0 ₽</span>
-            </div>
-        </div>
-        <button class="btn cart-checkout" id="checkoutBtn" style="display: none;">Оформить заказ</button>
-    </div>
-
-    <!-- Окно оформления заказа -->
-    <div class="checkout-modal" id="checkoutModal">
-        <div class="checkout-container">
-            <div class="checkout-header">
-                <h2 class="checkout-title">Оформление заказа</h2>
-                <button class="close-checkout">&times;</button>
-            </div>
-            
-            <form id="checkoutForm">
-                <div class="form-group">
-                    <label for="fullName">ФИО</label>
-                    <input type="text" id="fullName" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Телефон</label>
-                    <input type="tel" id="phone" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Адрес доставки</label>
-                    <textarea id="address" class="form-control" rows="3" required></textarea>
-                </div>
-                
-                <div class="payment-methods">
-                    <h3>Способ оплаты</h3>
-                    
-                    <div class="payment-method" data-method="card">
-                        <input type="radio" id="payment-card" name="payment" value="card" checked>
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Банковская карта" class="payment-icon">
-                        <label for="payment-card">Банковская карта</label>
-                    </div>
-                    
-                    <div class="payment-method" data-method="cash">
-                        <input type="radio" id="payment-cash" name="payment" value="cash">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3309/3309939.png" alt="Наличные" class="payment-icon">
-                        <label for="payment-cash">Наличными при получении</label>
-                    </div>
-                </div>
-                
-                <div class="payment-details active" id="card-details">
-                    <div class="card-icons">
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa" class="card-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard" class="card-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/196/196565.png" alt="МИР" class="card-icon">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="cardNumber">Номер карты</label>
-                        <input type="text" id="cardNumber" class="form-control" placeholder="0000 0000 0000 0000">
-                    </div>
-                    
-                    <div class="card-group">
-                        <div class="form-group">
-                            <label for="cardExpiry">Срок действия</label>
-                            <input type="text" id="cardExpiry" class="form-control" placeholder="ММ/ГГ">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="cardCvv">CVV/CVC</label>
-                            <input type="text" id="cardCvv" class="form-control" placeholder="123">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="payment-details" id="cash-details">
-                    <p>Оплата наличными курьеру при получении заказа. Подготовьте точную сумму, так как у курьера может не быть сдачи.</p>
-                </div>
-                
-                <button type="submit" class="btn submit-order">Подтвердить заказ</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Галерея коллекции -->
-    <div id="galleryOverlay" class="gallery-overlay">
-        <span class="close-gallery">&times;</span>
-        <div class="gallery-container">
-            <h2 class="gallery-title">Коллекция BREND 2025</h2>
-            <div class="gallery-grid">
-                <!-- 21 изображение коллекции -->
-                <div class="gallery-item">
-                    <img src="1.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Urban Classic</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="2.jpg" alt="BREND модель Leather Premium" class="gallery-img">
-                    <div class="gallery-item-caption">Leather Premium</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="3.jpg" alt="BREND модель Sport Pro" class="gallery-img">
-                    <div class="gallery-item-caption">Sport Pro</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="4.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Street Style</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="5.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Winter Edition</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="6.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Air Comfort</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="7.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Runner X</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="8.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Classic Black</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="9.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">White Edition</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="10.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Retro Style</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="11.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Future Tech</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="12.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">City Walk</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="13.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Premium Gold</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="14.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Silver Line</div>
-                </div>
-                <div class="gallery-item">
-                   <img src="15.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Night Vision</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="16.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Summer Breeze</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="17.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Urban Explorer</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="18.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Classic Brown</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="19.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Sport Elite</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="20.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Limited Edition</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="21.jpg" alt="BREND модель Urban Classic" class="gallery-img">
-                    <div class="gallery-item-caption">Signature Collection</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Галерея мужской обуви -->
-    <div id="menShoesGallery" class="gallery-overlay">
-        <span class="close-gallery">&times;</span>
-        <div class="gallery-container">
-            <h2 class="gallery-title">Мужская коллекция BREND 2025</h2>
-            <div class="gallery-grid">
-                <!-- 10 изображений мужской обуви -->
-                <div class="gallery-item">
-                    <img src="22.jpg" alt="BREND мужская модель Classic Black" class="gallery-img">
-                    <div class="gallery-item-caption">Classic Black</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="23.jpg" alt="BREND мужская модель Executive Brown" class="gallery-img">
-                    <div class="gallery-item-caption">Executive Brown</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="24.jpg" alt="BREND мужская модель Sport Pro" class="gallery-img">
-                    <div class="gallery-item-caption">Sport Pro</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="25.jpg" alt="BREND мужская модель Urban Walker" class="gallery-img">
-                    <div class="gallery-item-caption">Urban Walker</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="26.jpg" alt="BREND мужская модель Leather Premium" class="gallery-img">
-                    <div class="gallery-item-caption">Leather Premium</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="27.jpg" alt="BREND мужская модель Weekend" class="gallery-img">
-                    <div class="gallery-item-caption">Weekend</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="28.jpg" alt="BREND мужская модель Business Class" class="gallery-img">
-                    <div class="gallery-item-caption">Business Class</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="29.jpg" alt="BREND мужская модель Street Style" class="gallery-img">
-                    <div class="gallery-item-caption">Street Style</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="30.jpg" alt="BREND мужская модель Runner X" class="gallery-img">
-                    <div class="gallery-item-caption">Runner X</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="31.jpg" alt="BREND мужская модель Limited Edition" class="gallery-img">
-                    <div class="gallery-item-caption">Limited Edition</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Галерея женской обуви -->
-    <div id="womenShoesGallery" class="gallery-overlay">
-        <span class="close-gallery">&times;</span>
-        <div class="gallery-container">
-            <h2 class="gallery-title">Женская коллекция BREND 2025</h2>
-            <div class="gallery-grid">
-                <!-- 10 изображений женской обуви -->
-                <div class="gallery-item">
-                    <img src="32.jpg" alt="BREND женская модель Elegant Black" class="gallery-img">
-                    <div class="gallery-item-caption">Elegant Black</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="33.jpg" alt="BREND женская модель Fashion Heels" class="gallery-img">
-                    <div class="gallery-item-caption">Fashion Heels</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="34.jpg" alt="BREND женская модель Comfort Walk" class="gallery-img">
-                    <div class="gallery-item-caption">Comfort Walk</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="35.jpg" alt="BREND женская модель Summer Sandals" class="gallery-img">
-                    <div class="gallery-item-caption">Summer Sandals</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="36.jpg" alt="BREND женская модель Classic Pumps" class="gallery-img">
-                    <div class="gallery-item-caption">Classic Pumps</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="37.jpg" alt="BREND женская модель Sporty Chic" class="gallery-img">
-                    <div class="gallery-item-caption">Sporty Chic</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="38.jpg" alt="BREND женская модель Evening Glam" class="gallery-img">
-                    <div class="gallery-item-caption">Evening Glam</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="39.jpg" alt="BREND женская модель Casual Comfort" class="gallery-img">
-                    <div class="gallery-item-caption">Casual Comfort</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="40.jpg" alt="BREND женская модель Winter Boots" class="gallery-img">
-                    <div class="gallery-item-caption">Winter Boots</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="41.jpg" alt="BREND женская модель Limited Edition" class="gallery-img">
-                    <div class="gallery-item-caption">Limited Edition</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Модальное окно для увеличенного изображения -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <div class="gallery-nav">
-            <div class="gallery-nav-btn prev-btn">&#10094;</div>
-            <div class="gallery-nav-btn next-btn">&#10095;</div>
-        </div>
-        <img class="modal-content" id="modalImage">
-    </div>
-
-    <script>
-        // Загрузчик страницы
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.loader').classList.add('hidden');
-            }, 1000);
-        });
-
-        // Галерея
-        let galleryImages = document.querySelectorAll('.gallery-img');
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeModal = document.querySelector('.close-modal');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        let currentImageIndex = 0;
-
-        // Открытие основной галереи
-        document.getElementById('viewCollectionBtn').addEventListener('click', function() {
-            document.getElementById('galleryOverlay').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Открытие галереи мужской обуви
-        document.getElementById('menShoesLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('menShoesGallery').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Открытие галереи женской обуви
-        document.getElementById('womenShoesLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('womenShoesGallery').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Закрытие галерей
-        document.querySelectorAll('.close-gallery').forEach(closeBtn => {
-            closeBtn.addEventListener('click', function() {
-                this.closest('.gallery-overlay').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Закрытие галерей при клике вне контента
-        document.querySelectorAll('.gallery-overlay').forEach(gallery => {
-            gallery.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-
-        // Открытие модального окна с увеличенным изображением
-        function setupGalleryImages(galleryContainer) {
-            const images = galleryContainer.querySelectorAll('.gallery-img');
-            
-            images.forEach((img, index) => {
-                img.addEventListener('click', function() {
-                    modal.style.display = 'block';
-                    modalImg.src = this.src;
-                    modalImg.alt = this.alt;
-                    currentImageIndex = index;
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Обновляем массив изображений для навигации
-                    galleryImages = images;
-                });
-            });
-        }
-
-        // Инициализация галерей
-        setupGalleryImages(document.getElementById('galleryOverlay'));
-        setupGalleryImages(document.getElementById('menShoesGallery'));
-        setupGalleryImages(document.getElementById('womenShoesGallery'));
-
-        // Закрытие модального окна
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        // Закрытие модального окна при клике вне изображения
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Навигация по галерее в модальном окне
-        function showImage(index) {
-            if (index >= galleryImages.length) {
-                currentImageIndex = 0;
-            } else if (index < 0) {
-                currentImageIndex = galleryImages.length - 1;
-            } else {
-                currentImageIndex = index;
-            }
-            
-            const img = galleryImages[currentImageIndex];
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-        }
-
-        nextBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            showImage(currentImageIndex + 1);
-        });
-
-        prevBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            showImage(currentImageIndex - 1);
-        });
-
-        // Навигация с помощью клавиатуры
-        document.addEventListener('keydown', function(e) {
-            if (modal.style.display === 'block') {
-                if (e.key === 'ArrowRight') {
-                    showImage(currentImageIndex + 1);
-                } else if (e.key === 'ArrowLeft') {
-                    showImage(currentImageIndex - 1);
-                } else if (e.key === 'Escape') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        });
-
-        // Корзина
-        const cartIcon = document.getElementById('cartIcon');
-        const cartOverlay = document.getElementById('cartOverlay');
-        const closeCart = document.querySelector('.close-cart');
-        const cartItems = document.getElementById('cartItems');
-        const cartCount = document.getElementById('cartCount');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const cartSummary = document.getElementById('cartSummary');
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-        // Оформление заказа
-        const checkoutModal = document.getElementById('checkoutModal');
-        const closeCheckout = document.querySelector('.close-checkout');
-        const checkoutForm = document.getElementById('checkoutForm');
-        const paymentMethods = document.querySelectorAll('.payment-method');
-        const paymentDetails = document.querySelectorAll('.payment-details');
-
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Открытие/закрытие корзины
-        cartIcon.addEventListener('click', function() {
-            cartOverlay.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            updateCartDisplay();
-        });
-
-        closeCart.addEventListener('click', function() {
-            cartOverlay.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        cartOverlay.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Открытие/закрытие окна оформления заказа
-        checkoutBtn.addEventListener('click', function() {
-            cartOverlay.style.display = 'none';
-            checkoutModal.style.display = 'block';
-        });
-
-        closeCheckout.addEventListener('click', function() {
-            checkoutModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-
-        checkoutModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Переключение методов оплаты
-        paymentMethods.forEach(method => {
-            method.addEventListener('click', function() {
-                // Удаляем активный класс у всех методов
-                paymentMethods.forEach(m => m.classList.remove('active'));
-                // Добавляем активный класс текущему методу
-                this.classList.add('active');
-                
-                // Получаем выбранный метод оплаты
-                const methodType = this.getAttribute('data-method');
-                
-                // Скрываем все детали оплаты
-                paymentDetails.forEach(detail => detail.classList.remove('active'));
-                // Показываем детали для выбранного метода
-                document.getElementById(`${methodType}-details`).classList.add('active');
-            });
-        });
-
-        // Обработка формы оформления заказа
-        checkoutForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Проверка данных формы
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-            
-            // Дополнительная проверка для карты
-            if (paymentMethod === 'card') {
-                const cardNumber = document.getElementById('cardNumber').value;
-                const cardExpiry = document.getElementById('cardExpiry').value;
-                const cardCvv = document.getElementById('cardCvv').value;
-                
-                if (!cardNumber || !cardExpiry || !cardCvv) {
-                    alert('Пожалуйста, заполните все данные карты');
-                    return;
-                }
-            }
-            
-            // Создаем объект заказа
-            const order = {
-                customer: { fullName, email, phone, address },
-                paymentMethod,
-                items: cart,
-                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-                date: new Date().toISOString(),
-                status: 'Новый'
-            };
-            
-            // Сохраняем заказ (в реальном приложении здесь был бы AJAX-запрос к серверу)
-            const orders = JSON.parse(localStorage.getItem('orders')) || [];
-            orders.push(order);
-            localStorage.setItem('orders', JSON.stringify(orders));
-            
-            // Очищаем корзину
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartDisplay();
-            
-            // Закрываем модальные окна
-            checkoutModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            
-            // Показываем подтверждение
-            alert(`Спасибо за заказ, ${fullName}! Ваш заказ №${orders.length} успешно оформлен. Сумма: ${order.total.toLocaleString()} ₽`);
-        });
-
-        // Добавление товара в корзину
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const name = this.getAttribute('data-name');
-                const price = parseInt(this.getAttribute('data-price'));
-                const img = this.getAttribute('data-img');
-                
-                addToCart(id, name, price, img);
-            });
-        });
-
-        function addToCart(id, name, price, img) {
-            // Проверяем, есть ли товар уже в корзине
-            const existingItem = cart.find(item => item.id === id);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id,
-                    name,
-                    price,
-                    img,
-                    quantity: 1
-                });
-            }
-            
-            // Сохраняем корзину в localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Обновляем отображение корзины
-            updateCartCount();
-            
-            // Показываем уведомление
-            alert(`Товар "${name}" добавлен в корзину!`);
-        }
-
-        // Обновление счетчика корзины
-        function updateCartCount() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-        }
-
-        // Обновление отображения корзины
-        function updateCartDisplay() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="cart-empty">Ваша корзина пуста</div>';
-                cartSummary.style.display = 'none';
-                checkoutBtn.style.display = 'none';
-                return;
-            }
-            
-            cartItems.innerHTML = '';
-            
-            let total = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <img src="${item.img}" alt="${item.name}" class="cart-item-img">
-                    <div class="cart-item-details">
-                        <h4 class="cart-item-title">${item.name}</h4>
-                        <p class="cart-item-price">${item.price.toLocaleString()} ₽ × ${item.quantity} = ${itemTotal.toLocaleString()} ₽</p>
-                        <button class="cart-item-remove" data-id="${item.id}">Удалить</button>
-                    </div>
-                `;
-                
-                cartItems.appendChild(cartItem);
-            });
-            
-            // Добавляем обработчики для кнопок удаления
-            document.querySelectorAll('.cart-item-remove').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    removeFromCart(id);
-                });
-            });
-            
-            // Обновляем итоговую сумму
-            cartTotal.textContent = `${total.toLocaleString()} ₽`;
-            cartSummary.style.display = 'block';
-            checkoutBtn.style.display = 'block';
-        }
-
-        // Удаление товара из корзины
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            updateCartDisplay();
-        }
-
-        // Инициализация корзины при загрузке страницы
-        updateCartCount();
-    </script>
-</body>
-</html><!-- Добавьте этот код перед закрывающим тегом </body> -->
-<script>
-// Имитация платежного шлюза (в реальном проекте замените на реальный API)
-function processPayment(cardData, amount, callback) {
-    // В реальном проекте здесь будет AJAX-запрос к API платежной системы
-    console.log('Обработка платежа...', cardData);
-    
-    // Имитация задержки обработки платежа
-    setTimeout(() => {
-        // В 80% случаев возвращаем успех, в 20% - ошибку (для демонстрации)
-        const isSuccess = Math.random() > 0.2;
-        
-        if (isSuccess) {
-            callback({ success: true, transactionId: 'TXN' + Date.now() });
-        } else {
-            callback({ success: false, error: 'Недостаточно средств или ошибка карты' });
-        }
-    }, 1500);
-}
-
-// Обновленная функция обработки формы заказа
-checkoutForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Получаем данные формы
-    const fullName = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Блокируем кнопку отправки
-    const submitBtn = this.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Обработка...';
-    
-    if (paymentMethod === 'card') {
-        // Проверка данных карты
-        const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
-        const cardExpiry = document.getElementById('cardExpiry').value;
-        const cardCvv = document.getElementById('cardCvv').value;
-        
-        if (!cardNumber || !cardExpiry || !cardCvv) {
-            alert('Пожалуйста, заполните все данные карты');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Подтвердить заказ';
-            return;
-        }
-        
-        // Проверка номера карты (простая валидация)
-        if (!/^\d{16}$/.test(cardNumber)) {
-            alert('Номер карты должен содержать 16 цифр');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Подтвердить заказ';
-            return;
-        }
-        
-        // Подготовка данных для платежа
-        const [expMonth, expYear] = cardExpiry.split('/');
-        const cardData = {
-            number: cardNumber,
-            expMonth: expMonth.trim(),
-            expYear: '20' + expYear.trim(),
-            cvv: cardCvv,
-            cardholder: fullName
-        };
-        
-        // Вызов функции обработки платежа
-        processPayment(cardData, totalAmount, (response) => {
-            if (response.success) {
-                completeOrder(totalAmount, response.transactionId);
-            } else {
-                alert('Ошибка оплаты: ' + response.error);
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Подтвердить заказ';
-            }
-        });
-    } else {
-        // Оплата наличными - сразу оформляем заказ
-        completeOrder(totalAmount, 'CASH-' + Date.now());
-    }
-});
-
-function completeOrder(totalAmount, transactionId) {
-    // Создаем объект заказа
-    const order = {
-        customer: { 
-            fullName: document.getElementById('fullName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            address: document.getElementById('address').value
-        },
-        paymentMethod: document.querySelector('input[name="payment"]:checked').value,
-        transactionId: transactionId,
-        items: [...cart],
-        total: totalAmount,
-        date: new Date().toISOString(),
-        status: 'Оплачен'
-    };
-    
-    // Сохраняем заказ (в реальном приложении - отправка на сервер)
-    const orders = JSON.parse(localStorage.getItem('orders')) || [];
-    orders.push(order);
-    localStorage.setItem('orders', JSON.stringify(orders));
-    
-    // Очищаем корзину
-    cart = [];
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-    updateCartDisplay();
-    
-    // Закрываем модальные окна
-    checkoutModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    
-    // Показываем подтверждение
-    alert(`Заказ №${orders.length} успешно оплачен! Сумма: ${totalAmount.toLocaleString()} ₽\nТранзакция: ${transactionId}`);
-}
-</script>
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Обувь BREND - это идеальное сочетание стиля и комфорта. Ношу уже полгода, выглядит как новая. Рекомендую!"</p>
+                    <p class="testimonial-author">Алексей Петров</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </
