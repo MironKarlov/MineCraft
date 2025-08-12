@@ -918,7 +918,153 @@
             <div class="copyright">
                 <p>&copy; 2025 BREND. Все права защищены.</p>
             </div>
+      <!-- Добавьте этот раздел перед футером (перед </footer>) -->
+
+<section class="faq">
+    <div class="container">
+        <h2 class="section-title">Вопросы и ответы</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Как определить правильный размер обуви?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Мы рекомендуем использовать нашу таблицу размеров, доступную на странице каждой модели. Если у вас промежуточный размер, лучше выбрать больший размер для комфорта. Наши консультанты также всегда готовы помочь с выбором.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Какие материалы используются в производстве обуви?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Мы используем только высококачественные материалы: натуральную кожу, замшу, современные дышащие мембраны и экологичные синтетические материалы. Каждая модель имеет подробное описание материалов в карточке товара.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Как ухаживать за обувью BREND?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Для кожаных моделей рекомендуем использовать специальные кремы и спреи. Замшевые изделия требуют щетки и специальных средств для замши. В комплекте с каждой парой вы получаете подробную инструкцию по уходу.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Какие способы оплаты доступны?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Мы принимаем: банковские карты (Visa, Mastercard, МИР), Apple Pay, Google Pay, наличные при самовывозе и курьерской доставке, а также безналичный расчет для юридических лиц.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Как осуществляется доставка?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Доставка возможна курьером по всей России, в пункты выдачи заказов или самовывозом из нашего магазина в Ростове-на-Дону. Сроки и стоимость доставки рассчитываются при оформлении заказа.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Можно ли вернуть или обменять обувь?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, согласно законодательству РФ, вы можете вернуть или обменять обувь в течение 14 дней с момента покупки, если она не была в употреблении и сохранен товарный вид. Для обуви, купленной онлайн, этот срок составляет 7 дней.</p>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
+
+<!-- Добавьте эти стили в тег <style> -->
+
+.faq {
+    padding: 2rem 0;
+    background-color: #f5f5f5;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 15px 20px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #f9f9f9;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.faq-toggle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    background-color: white;
+}
+
+.faq-item.active .faq-answer {
+    padding: 15px 20px;
+    max-height: 500px;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+/* Добавьте этот JavaScript в конец тега <script> */
+
+// FAQ функционал
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+        
+        // Закрываем другие открытые вопросы
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+                otherItem.classList.remove('active');
+            }
+        });
+    });
+});  </div>
     </footer>
 
     <!-- Корзина -->
