@@ -344,4 +344,31 @@
         });
     </script>
 </body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Мой сайт</title>
+</head>
+<body>
+    <h1>Добро пожаловать на мой сайт!</h1>
+    
+    <!-- СЮДА ВСТАВЬТЕ ФОРМУ ОПЛАТЫ -->
+    <form method="POST" action="https://yoomoney.ru/quickpay/confirm.xml">
+        <input type="hidden" name="receiver" value="410011234567890">
+        <input type="hidden" name="formcomment" value="Оплата заказа">
+        <input type="hidden" name="short-dest" value="Оплата заказа">
+        <input type="hidden" name="label" value="order{id}">
+        <input type="hidden" name="quickpay-form" value="shop">
+        <input type="hidden" name="targets" value="Товар">
+        <input type="hidden" name="paymentType" value="AC">
+        
+        <p><strong>Сумма:</strong></p>
+        <input type="number" name="sum" value="500" min="1" required> рублей
+        
+        <br><br>
+        <input type="submit" value="Оплатить картой МИР">
+    </form>
+    <!-- КОНЕЦ ФОРМЫ -->
+    
+</body>
 </html>
