@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поддержать сервер - Minecraft Server</title>
+    <title>Атернос Сервер - Система привилегий</title>
     <style>
+        :root {
+            --hero: #1e90ff;
+            --titan: #ffd700;
+            --avenger: #32cd32;
+            --overlord: #00ced1;
+            --magister: #ff8c00;
+            --imperator: #dc143c;
+            --dragon: #9370db;
+            --cobra: #7fff00;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -13,348 +24,324 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #fff;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 100%);
+            color: #f0f0f0;
             min-height: 100vh;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #333;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #1e90ff, #9370db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 1rem;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
         }
         
-        header {
-            text-align: center;
-            padding: 40px 0;
+        .privilege-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .privilege-card {
+            background: rgba(30, 30, 46, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .donation-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
-        
-        .donation-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .donation-option {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 20px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.3s, background 0.3s;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        
-        .donation-option:hover {
+        .privilege-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .donation-option.selected {
-            border-color: #4CAF50;
-            background: rgba(76, 175, 80, 0.2);
+        .privilege-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
         }
         
-        .amount {
+        .hero::before { background-color: var(--hero); }
+        .titan::before { background-color: var(--titan); }
+        .avenger::before { background-color: var(--avenger); }
+        .overlord::before { background-color: var(--overlord); }
+        .magister::before { background-color: var(--magister); }
+        .imperator::before { background-color: var(--imperator); }
+        .dragon::before { background-color: var(--dragon); }
+        .cobra::before { background-color: var(--cobra); }
+        
+        .privilege-name {
             font-size: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: bold;
-            margin-bottom: 10px;
         }
         
-        .bonus {
-            font-size: 0.9rem;
-            opacity: 0.8;
+        .hero .privilege-name { color: var(--hero); }
+        .titan .privilege-name { color: var(--titan); }
+        .avenger .privilege-name { color: var(--avenger); }
+        .overlord .privilege-name { color: var(--overlord); }
+        .magister .privilege-name { color: var(--magister); }
+        .imperator .privilege-name { color: var(--imperator); }
+        .dragon .privilege-name { color: var(--dragon); }
+        .cobra .privilege-name { color: var(--cobra); }
+        
+        .privilege-features {
+            list-style-type: none;
         }
         
-        .custom-amount {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .custom-amount input {
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: none;
-            width: 200px;
-            text-align: center;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .payment-method {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 15px 25px;
-            cursor: pointer;
-            transition: background 0.3s;
+        .privilege-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
-            gap: 10px;
         }
         
-        .payment-method:hover {
-            background: rgba(255, 255, 255, 0.25);
+        .privilege-features li:last-child {
+            border-bottom: none;
         }
         
-        .payment-method.selected {
-            background: rgba(76, 175, 80, 0.3);
+        .privilege-features li::before {
+            content: '✓';
+            margin-right: 0.5rem;
+            font-weight: bold;
         }
         
-        .donate-btn {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 30px auto;
-            padding: 15px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
+        .hero .privilege-features li::before { color: var(--hero); }
+        .titan .privilege-features li::before { color: var(--titan); }
+        .avenger .privilege-features li::before { color: var(--avenger); }
+        .overlord .privilege-features li::before { color: var(--overlord); }
+        .magister .privilege-features li::before { color: var(--magister); }
+        .imperator .privilege-features li::before { color: var(--imperator); }
+        .dragon .privilege-features li::before { color: var(--dragon); }
+        .cobra .privilege-features li::before { color: var(--cobra); }
+        
+        .price {
+            margin-top: 1rem;
             font-size: 1.2rem;
             font-weight: bold;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero .price { color: var(--hero); border: 1px solid var(--hero); }
+        .titan .price { color: var(--titan); border: 1px solid var(--titan); }
+        .avenger .price { color: var(--avenger); border: 1px solid var(--avenger); }
+        .overlord .price { color: var(--overlord); border: 1px solid var(--overlord); }
+        .magister .price { color: var(--magister); border: 1px solid var(--magister); }
+        .imperator .price { color: var(--imperator); border: 1px solid var(--imperator); }
+        .dragon .price { color: var(--dragon); border: 1px solid var(--dragon); }
+        .cobra .price { color: var(--cobra); border: 1px solid var(--cobra); }
+        
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
         
-        .donate-btn:hover {
-            background: #45a049;
-        }
+        .hero .buy-btn { background: var(--hero); color: white; }
+        .titan .buy-btn { background: var(--titan); color: black; }
+        .avenger .buy-btn { background: var(--avenger); color: white; }
+        .overlord .buy-btn { background: var(--overlord); color: white; }
+        .magister .buy-btn { background: var(--magister); color: white; }
+        .imperator .buy-btn { background: var(--imperator); color: white; }
+        .dragon .buy-btn { background: var(--dragon); color: white; }
+        .cobra .buy-btn { background: var(--cobra); color: black; }
         
-        .server-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .info-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .info-card h3 {
-            margin-bottom: 15px;
-            color: #4CAF50;
+        .buy-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
         }
         
         footer {
             text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid #333;
         }
         
         @media (max-width: 768px) {
-            .donation-options {
-                flex-direction: column;
-                align-items: center;
+            .privilege-grid {
+                grid-template-columns: 1fr;
             }
             
-            .donation-option {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .payment-methods {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .payment-method {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>АТЕРНОС СЕРВЕР</h1>
+        <p class="subtitle">Выберите привилегию для максимального игрового опыта</p>
+    </header>
+    
     <div class="container">
-        <header>
-            <div class="logo">Minecraft Server</div>
-            <p class="subtitle">Поддержите развитие нашего сервера и получите эксклюзивные привилегии!</p>
-        </header>
-        
-        <section class="donation-section">
-            <h2 class="section-title">Выберите сумму доната</h2>
-            
-            <div class="donation-options">
-                <div class="donation-option" data-amount="100">
-                    <div class="amount">100 ₽</div>
-                    <div class="bonus">dragon</div>
-                </div>
-                <div class="donation-option" data-amount="300">
-                    <div class="amount">300 ₽</div>
-                    <div class="bonus">cobra </div>
-                </div>
-                <div class="donation-option" data-amount="500">
-                    <div class="amount">325 ₽</div>
-                    <div class="bonus">Premium</div>
-                </div>
-            
-            <div class="custom-amount">
-                <p>Или введите свою сумму:</p>
-                <input type="number" id="custom-amount" placeholder="Сумма в рублях" min="10">
+        <div class="privilege-grid">
+            <!-- Hero -->
+            <div class="privilege-card hero">
+                <h2 class="privilege-name">HERO</h2>
+                <ul class="privilege-features">
+                    <li>Доступ к команде /fly</li>
+                    <li>Префикс в чате [Hero]</li>
+                    <li>Возможность создать 3 варпа</li>
+                    <li>Доступ к набору Hero Kit</li>
+                    <li>Увеличенный лимит домов</li>
+                </ul>
+                <div class="price">20 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
             </div>
             
-            <h2 class="section-title">Выберите способ оплаты</h2>
-            
-            <div class="payment-methods">
-                <div class="payment-method" data-method="qiwi">
-                    <span>QIWI</span>
-                </div>
-                <div class="payment-method" data-method="yoomoney">
-                    <span>ЮMoney</span>
-                </div>
-                <div class="payment-method" data-method="card">
-                    <span>Банковская карта</span>
-                </div>
+            <!-- Titan -->
+            <div class="privilege-card titan">
+                <h2 class="privilege-name">TITAN</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Hero</li>
+                    <li>Префикс в чате [Titan]</li>
+                    <li>Возможность создать 5 варпов</li>
+                    <li>Доступ к набору Titan Kit</li>
+                    <li>Возможность телепортации к игрокам</li>
+                </ul>
+                <div class="price">30 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
             </div>
             
-            <button class="donate-btn" id="donate-btn">Поддержать сервер</button>
-        </section>
-        
-        <div class="server-info">
-            <div class="info-card">
-                <h3>Что дают донаты?</h3>
-                <p>Донаты помогают поддерживать сервер онлайн, улучшать его функционал и добавлять новый контент. В благодарность за поддержку вы получаете специальные привилегии на сервере.</p>
+            <!-- Avenger -->
+            <div class="privilege-card avenger">
+                <h2 class="privilege-name">AVENGER</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Titan</li>
+                    <li>Префикс в чате [Avenger]</li>
+                    <li>Возможность создать 7 варпов</li>
+                    <li>Доступ к набору Avenger Kit</li>
+                    <li>Возможность починки предметов</li>
+                </ul>
+                <div class="price">40 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
             </div>
             
-            <div class="info-card">
-                <h3>Как получить привилегии?</h3>
-                <p>После успешной оплаты привилегия будет автоматически выдана вашему игровому аккаунту. Если у вас возникли проблемы, свяжитесь с администрацией сервера.</p>
+            <!-- Overlord -->
+            <div class="privilege-card overlord">
+                <h2 class="privilege-name">OVERLORD</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Avenger</li>
+                    <li>Префикс в чате [Overlord]</li>
+                    <li>Возможность создать 10 варпов</li>
+                    <li>Доступ к набору Overlord Kit</li>
+                    <li>Возможность исцеления</li>
+                </ul>
+                <div class="price">50 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
             </div>
             
-            <div class="info-card">
-                <h3>Информация о сервере</h3>
-                <p>IP: mc.example.com (замените на ваш IP с Aternos)</p>
-                <p>Версия: 1.19.x</p>
-                <p>Режим: Выживание с дополнениями</p>
+            <!-- Magister -->
+            <div class="privilege-card magister">
+                <h2 class="privilege-name">MAGISTER</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Overlord</li>
+                    <li>Префикс в чате [Magister]</li>
+                    <li>Возможность создать 12 варпов</li>
+                    <li>Доступ к набору Magister Kit</li>
+                    <li>Возможность изменения погоды</li>
+                </ul>
+                <div class="price">60 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
+            </div>
+            
+            <!-- Imperator -->
+            <div class="privilege-card imperator">
+                <h2 class="privilege-name">IMPERATOR</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Magister</li>
+                    <li>Префикс в чате [Imperator]</li>
+                    <li>Возможность создать 15 варпов</li>
+                    <li>Доступ к набору Imperator Kit</li>
+                    <li>Возможность банить игроков</li>
+                </ul>
+                <div class="price">90 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
+            </div>
+            
+            <!-- Dragon -->
+            <div class="privilege-card dragon">
+                <h2 class="privilege-name">DRAGON</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Imperator</li>
+                    <li>Префикс в чате [Dragon]</li>
+                    <li>Возможность создать 20 варпов</li>
+                    <li>Доступ к набору Dragon Kit</li>
+                    <li>Возможность выдавать варны</li>
+                </ul>
+                <div class="price">120 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
+            </div>
+            
+            <!-- Cobra -->
+            <div class="privilege-card cobra">
+                <h2 class="privilege-name">COBRA</h2>
+                <ul class="privilege-features">
+                    <li>Все возможности Dragon</li>
+                    <li>Префикс в чате [Cobra]</li>
+                    <li>Возможность создать 25 варпов</li>
+                    <li>Доступ к набору Cobra Kit</li>
+                    <li>Возможность телепортации к любому игроку</li>
+                </ul>
+                <div class="price">140 рублей</div>
+                <button class="buy-btn">Купить привилегию</button>
             </div>
         </div>
-        
-        <footer>
-            <p>Minecraft Server &copy; 2023 | Поддержка: admin@example.com</p>
-        </footer>
     </div>
+    
+    <footer>
+        <p>© 2023 Атернос Сервер. Все права защищены.</p>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const donationOptions = document.querySelectorAll('.donation-option');
-            const paymentMethods = document.querySelectorAll('.payment-method');
-            const customAmountInput = document.getElementById('custom-amount');
-            const donateBtn = document.getElementById('donate-btn');
-            
-            let selectedAmount = null;
-            let selectedPaymentMethod = null;
-            
-            // Выбор суммы доната
-            donationOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    donationOptions.forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedAmount = this.getAttribute('data-amount');
-                    customAmountInput.value = '';
-                });
+        // Добавляем обработчики событий для кнопок покупки
+        document.querySelectorAll('.buy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const privilegeName = this.parentElement.querySelector('.privilege-name').textContent;
+                const privilegePrice = this.parentElement.querySelector('.price').textContent;
+                alert(`Вы выбрали привилегию "${privilegeName}" за ${privilegePrice}! В ближайшее время с вами свяжется администратор для оформления покупки.`);
             });
-            
-            // Ввод своей суммы
-            customAmountInput.addEventListener('input', function() {
-                donationOptions.forEach(opt => opt.classList.remove('selected'));
-                selectedAmount = this.value;
-            });
-            
-            // Выбор способа оплаты
-            paymentMethods.forEach(method => {
-                method.addEventListener('click', function() {
-                    paymentMethods.forEach(m => m.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedPaymentMethod = this.getAttribute('data-method');
-                });
-            });
-            
-            // Обработка доната
-            donateBtn.addEventListener('click', function() {
-                if (!selectedAmount) {
-                    alert('Пожалуйста, выберите сумму доната');
-                    return;
-                }
-                
-                if (!selectedPaymentMethod) {
-                    alert('Пожалуйста, выберите способ оплаты');
-                    return;
-                }
-                
-                // Здесь должна быть интеграция с платежной системой
-                // Для демонстрации просто покажем сообщение
-                alert(`Спасибо! Вы выбрали донат на сумму ${selectedAmount} ₽ через ${getPaymentMethodName(selectedPaymentMethod)}. В реальном сайте здесь будет перенаправление на платежную систему.`);
-                
-                // В реальном проекте здесь должен быть код для обработки платежа
-                // и интеграции с сервером Aternos через плагины доната
-            });
-            
-            function getPaymentMethodName(method) {
-                switch(method) {
-                    case 'qiwi': return 'QIWI';
-                    case 'yoomoney': return 'ЮMoney';
-                    case 'card': return 'банковскую карту';
-                    default: return 'неизвестный метод';
-                }
-            }
         });
     </script>
 </body>
 </html>
-<!-- VK Pay кнопка -->
-<script src="https://vk.com/js/api/openapi.js?169"></script>
-<div id="vk_pay"></div>
-<script>
-VK.Widgets.Pay("vk_pay", {
-    amount: 1000,
-    description: "Оплата заказа"
-});
-</script>
