@@ -349,3 +349,12 @@
     </script>
 </body>
 </html>
+<!-- VK Pay кнопка -->
+<script src="https://vk.com/js/api/openapi.js?169"></script>
+<div id="vk_pay"></div>
+<script>
+VK.Widgets.Pay("vk_pay", {
+    amount: 1000,
+    description: "Оплата заказа"
+});
+</script>
